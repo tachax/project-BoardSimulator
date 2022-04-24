@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="jogo.css">
+    <title>Board Simulator</title>
+</head>
+<body>
+      
+    <h1>Board Simulator</h1>
+
+    <div id="nicknames" class="nicknames">
+        <div class="card-players">
+            <h3>Player 1</h3>
+            <label for="nick1">Escolha um nickname:</label>
+            <input type="text" id="nick1">
+        </div>
+        <div class="card-players">
+            <h3>Player 2</h3>
+            <label for="nick2">Escolha um nickname:</label>
+            <input type="text" id="nick2">
+        </div>
+    </div>
+
+    <br>
+    <button id="jogar" onclick="jogar()">Iniciar Jogo</button>
+
+    <br><br><br>
+
+    <table id="tabela"></table>
+
+    <br>
+
+
+    <div id="jogo" class="jogo">
+        <div>
+            <h2>Status do Jogo</h2>
+            <p id="status"></p>
+        </div>
+        
+        <div  id="menuPlayers" class="menuPlayers">
+            <h3 id="player">Escolha dos Jogadores:</h3>
+            <div class="botoes">
+                <button id="rolar" onclick="rolarDados()">Rolar Dados</button>
+                <button onclick="tomarAntidoto()">Tomar Antídoto</button>
+                <button onclick="desistir()">Desistir</button>
+                <button onclick="curarVeneno()">Rolar Dados Envenenado</button>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,78 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    text-align: center;
+}
+
+h1 {
+    margin-top: 40px;
+    margin-bottom: -20px;
+}
+
+.nicknames {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.card-players {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.card-players input {
+    margin: auto;
+    padding: 4px;
+    
+}
+
+button {
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+table {
+    text-align: center;
+    border: solid 1px;
+    background: black;
+    border-radius: 5px;
+    margin: auto;
+}
+
+td {
+    border: solid 1px;
+    padding: 3px;
+    background: white;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    font-weight: 700;
+    border-radius: 5px;
+}
+
+.menuPlayers {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 10px;
+}
+
+.botoes {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 10px;
+}
+
+.jogo {
+    margin-top: 50px;
+    display: none;
+    flex-direction: column;
+    gap: 60px;
+}
