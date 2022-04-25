@@ -12,7 +12,7 @@ let antidotoPlay2 = 3;
 
 //construção do tabuleiro
 let tabuleiro = [];
-let armadilha = [];
+let armadilha;
 let casasIguais = [];
 let id = 1;
 let rodadas = 1;
@@ -30,18 +30,21 @@ function jogar() {
     //inserindo o tabuleiro
     document.getElementById("tabela").innerHTML =
         `<tr id='linha'>
-            <td style="background: green" id="inicio1">1</td>
+            <td style="background: rgb(116, 163, 116)" id="inicio1">1</td>
         </tr>
         <tr>
-            <td style="background: purple" id="inicio2">2</td>
+            <td style="background: rgb(122, 64, 122)" id="inicio2">2</td>
         </tr>`;
 
 
     //sorteando as casas da armadilha
     for (i = 0; i < 10; i++) {
         armadilha = Math.floor(Math.random() * 30);
+        casasIguais.push(armadilha)
         tabuleiro[armadilha] = -1;
     }
+    console.log(casasIguais)
+    console.log(casasIguais.length)
 
     //preenchendo as casas restantes do tabuleiro
     for (let i = 0; i < 30; i++) {
@@ -54,6 +57,8 @@ function jogar() {
     document.getElementById("linha").innerHTML += `<td rowspan="2" id="chegada">CHEGADA</td>`;
     document.getElementById("jogo").style.display = "flex";  
     document.getElementById("player").innerText = `${nick1}, faça a sua escolha`;  
+    document.getElementById("extra1").innerText = `${nick1}`;  
+    document.getElementById("extra2").innerText = `${nick2}`;  
 }
 
 //dados
@@ -92,9 +97,9 @@ function rolarDados() {
 
         //se for igual, volta 1 casa
         if (casaPlay1 == casaPlay2) {
-            casaPlay1 = String(casaPlay1 - 1);
+            casaPlay1 = casaPlay1 - 1;
         } else {
-            casaPlay1 = String(casaPlay1);
+            casaPlay1 = casaPlay1;
         }
 
         //verifica se alguém chegou ao fim do jogo
@@ -106,7 +111,8 @@ function rolarDados() {
 
         //atualiza a posição do jog na tela com sua cor
         document.getElementById(casaPlay1).innerText = posicaoPlay1;
-        document.getElementById(casaPlay1).style.backgroundColor = 'green';
+        document.getElementById(casaPlay1).style.backgroundColor = 'rgb(116, 163, 116)';
+        document.getElementById('casa1').innerHTML = `Está na casa ${casaPlay1}`;
         document.getElementById("inicio1").innerHTML = `INI`;
         document.getElementById("inicio1").style.backgroundColor = 'white';
 
@@ -114,7 +120,6 @@ function rolarDados() {
             document.getElementById('status').innerHTML = `${nick1} caiu na armadilha`;
         } 
 
-        rodadas++
     } else {
         document.getElementById("player").innerText = `${nick1}, faça a sua escolha`;
 
@@ -130,9 +135,9 @@ function rolarDados() {
         casaPlay2 += somaDados;
 
         if (casaPlay2 == casaPlay1) {
-            casaPlay2 = String(casaPlay2 - 1);
+            casaPlay2 = casaPlay2 - 1;
         } else {
-            casaPlay2 = String(casaPlay2);
+            casaPlay2 = casaPlay2;
         }
 
         if (casaPlay2 > 30) {
@@ -140,21 +145,18 @@ function rolarDados() {
         }
 
         document.getElementById(casaPlay2).innerText = posicaoPlay2;
-        document.getElementById(casaPlay2).style.backgroundColor = 'purple';
+        document.getElementById(casaPlay2).style.backgroundColor = 'rgb(122, 64, 122)';
+        document.getElementById('casa2').innerHTML = `Está na casa ${casaPlay2}`;
         document.getElementById("inicio2").innerHTML = `CIO`;
         document.getElementById("inicio2").style.backgroundColor = 'white';
 
         if (tabuleiro[casaPlay2 - 1] == -1) {
             document.getElementById('status').innerHTML = `${nick2} caiu na armadilha`;
         } 
-        rodadas++
     }
 
     console.log(`rodada ${rodadas}`);
-    // rodadas++;
-
-    casaPlay1 = Number(casaPlay1);
-    casaPlay2 = Number(casaPlay2);
+    rodadas++;
     console.log("Casa Play 1: " + casaPlay1);
     console.log("Casa Play 2: " + casaPlay2);
 }
@@ -179,14 +181,17 @@ function curarVeneno() {
                 document.getElementById('status').innerHTML += `<br> ${nick1} terá que voltar 5 casas`;
                 casaPlay1 = casaPlay1 - 3
                 document.getElementById(casaPlay1).innerText = posicaoPlay1;
-                document.getElementById(casaPlay1).style.backgroundColor = 'green';
+                document.getElementById(casaPlay1).style.backgroundColor = 'rgb(116, 163, 116)';
+                document.getElementById('casa1').innerHTML = `Está na casa ${casaPlay1}`;
 
             } else {
                 document.getElementById('status').innerHTML += `<br> ${nick1} terá que voltar 2 casas`;
                 document.getElementById(casaPlay1).innerText = posicaoPlay1;
-                document.getElementById(casaPlay1).style.backgroundColor = 'green';
+                document.getElementById(casaPlay1).style.backgroundColor = 'rgb(116, 163, 116)';
+                document.getElementById('casa1').innerHTML = `Está na casa ${casaPlay1}`;
             }  
         }
+        document.getElementById("player").innerText = `${nick2}, faça a sua escolha`;
         rodadas++;
 
     } else {
@@ -201,14 +206,17 @@ function curarVeneno() {
                 document.getElementById('status').innerHTML += `<br> ${nick2} terá que voltar 5 casas`;
                 casaPlay2 = casaPlay1 - 3
                 document.getElementById(casaPlay2).innerText = posicaoPlay2;
-                document.getElementById(casaPlay2).style.backgroundColor = 'purple';
+                document.getElementById(casaPlay2).style.backgroundColor = 'rgb(122, 64, 122)';
+                document.getElementById('casa2').innerHTML = `Está na casa ${casaPlay2}`;
 
             } else {
                 document.getElementById('status').innerHTML += `<br> ${nick2} terá que voltar 2 casas`;
                 document.getElementById(casaPlay2).innerText = posicaoPlay2;
-                document.getElementById(casaPlay2).style.backgroundColor = 'purple';
+                document.getElementById(casaPlay2).style.backgroundColor = 'rgb(122, 64, 122)';
+                document.getElementById('casa2').innerHTML = `Está na casa ${casaPlay2}`;
             }  
         }
+        document.getElementById("player").innerText = `${nick1}, faça a sua escolha`;
         rodadas++;
     }
 
@@ -218,13 +226,15 @@ function curarVeneno() {
 function tomarAntidoto() {
     if (rodadas % 2 != 0) {
         antidotoPlay1--;
-        document.getElementById('status').innerHTML = `${nick1} tomou um antídoto e está curado do veneno`;
+        document.getElementById('status').innerHTML = `${nick1} tomou um antídoto e <br> está curado do veneno`;
+        document.getElementById('estoque1').innerHTML = `Antídotos: ${antidotoPlay1}`;
     } else {
-        antidotoPlay1--;
-        document.getElementById('status').innerHTML = `${nick2} tomou um antídoto e está curado do veneno`;
+        antidotoPlay2--;
+        document.getElementById('status').innerHTML = `${nick2} tomou um antídoto e <br> está curado do veneno`;
+        document.getElementById('estoque2').innerHTML = `Antídotos: ${antidotoPlay2}`;
     }
 
-    rodadas++
+    rodadas++;
 }
 
 

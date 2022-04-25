@@ -9,7 +9,6 @@
     <title>Board Simulator</title>
 </head>
 <body>
-      
     <h1>Board Simulator</h1>
 
     <div id="nicknames" class="nicknames">
@@ -23,33 +22,52 @@
             <label for="nick2">Escolha um nickname:</label>
             <input type="text" id="nick2">
         </div>
+        <button id="jogar" onclick="jogar()">Iniciar Jogo</button>
     </div>
+  
 
-    <br>
-    <button id="jogar" onclick="jogar()">Iniciar Jogo</button>
-
-    <br><br><br>
-
-    <table id="tabela"></table>
-
-    <br>
-
-
+    <table class="tabuleiro" id="tabela"></table>
+    
     <div id="jogo" class="jogo">
-        <div>
-            <h2>Status do Jogo</h2>
-            <p id="status"></p>
-        </div>
-        
         <div  id="menuPlayers" class="menuPlayers">
-            <h3 id="player">Escolha dos Jogadores:</h3>
+            <h2 id="player">Escolha dos Jogadores:</h2>
             <div class="botoes">
-                <button id="rolar" onclick="rolarDados()">Rolar Dados</button>
-                <button onclick="tomarAntidoto()">Tomar Antídoto</button>
-                <button onclick="desistir()">Desistir</button>
-                <button onclick="curarVeneno()">Rolar Dados Envenenado</button>
+                <button id="botRolar" onclick="rolarDados()">Rolar Dados</button>
+                <button id="botTomar" onclick="tomarAntidoto()">Tomar Antídoto</button>
+                <button id="botDesistir" onclick="desistir()">Desistir</button>
+                <button id="botCurar" onclick="curarVeneno()">Rolar Dados Envenenado</button>
             </div>
         </div>
+        <div>
+            <h2>Status do Jogo</h2>
+            <div class="status">
+                <div>
+                    <h3>Extras:</h3>
+                    <table class="extra">
+                        <tr>
+                            <td rowspan="2" id="extra1">play 1</td>
+                            <td id="casa1">Está na casa início</td>
+                        </tr>
+                        <tr>
+                            <td id="estoque1">Antídotos: 3</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2" id="extra2">play 2</td>
+                            <td id="casa2">Está na casa início</td>
+                        </tr>
+                        <tr>
+                            <td id="estoque2">Antídotos: 3</td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <h3>Acontecendo agora:</h3>
+                    <p id="status">Nenhum jogador no tabuleiro</p>
+                </div>
+            </div>
+        </div>
+        
+        
     </div>
     
 </body>
