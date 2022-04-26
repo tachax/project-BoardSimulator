@@ -84,10 +84,10 @@ function rolarDados() {
         } else {
             avancarCasas();
 
-            //recoloca o -1 no índice do vetor original
+            //recoloca o -1 no elemento do vetor original
             tabuleiro[casaCurada1-1] = -1;
 
-            //recoloca a armadilha na casa
+            //recoloca a armadilha na tela
             document.getElementById(casaCurada1).innerHTML = tabuleiro[casaCurada1-1];
         }
     } else {
@@ -97,10 +97,10 @@ function rolarDados() {
         } else {
             avancarCasas();
 
-            //recoloca o -1 no índice do vetor original
+            //recoloca o -1 no elemento do vetor original
             tabuleiro[casaCurada2-1] = -1;
 
-            //recoloca a armadilha na casa
+            //recoloca a armadilha na tela
             document.getElementById(casaCurada2).innerHTML = tabuleiro[casaCurada2-1];
         }
     }  
@@ -219,7 +219,7 @@ function curarVeneno() {
             //pega a casa que foi curada
             casaCurada1 = casaPlay1;
 
-            //muda o valor do vetor tabuleiro p/ jog andar na próx rodada
+            //muda o valor do elemento do vetor tabuleiro p/ jog andar na próx rodada
             tabuleiro[casaPlay1 - 1] = 0;
         } else {
             //muda a casa antiga pra branco
@@ -237,22 +237,18 @@ function curarVeneno() {
                 document.getElementById(casaPlay1).style.backgroundColor = 'rgb(116, 163, 116)';
                 document.getElementById('casa1').innerHTML = `Está na casa ${casaPlay1}`;
 
-                //vê se caiu novamente em uma armadilha
-                if (tabuleiro[casaPlay1 - 1] == -1) {
-                    document.getElementById('status').innerHTML += `<br> ${nick1} caiu na armadilha`;
-                }
-
             } else {
                 document.getElementById('status').innerHTML += `<br> ${nick1} terá que voltar 2 casas`;
                 document.getElementById(casaPlay1).innerText = posicaoPlay1;
                 document.getElementById(casaPlay1).style.backgroundColor = 'rgb(116, 163, 116)';
                 document.getElementById('casa1').innerHTML = `Está na casa ${casaPlay1}`;
-
-                //vê se caiu novamente em uma armadilha
-                if (tabuleiro[casaPlay1 - 1] == -1) {
-                    document.getElementById('status').innerHTML += `<br> ${nick1} caiu na armadilha`;
-                }
+                
             }  
+
+            //vê se caiu novamente em uma armadilha
+            if (tabuleiro[casaPlay1 - 1] == -1) {
+                document.getElementById('status').innerHTML += `<br> ${nick1} caiu na armadilha`;
+            }
         }
         document.getElementById("player").innerText = `${nick2}, faça a sua escolha`;
         rodadas++;
@@ -266,7 +262,7 @@ function curarVeneno() {
             //pega a casa que foi curada
             casaCurada2 = casaPlay2;
 
-            //muda o valor do vetor tabuleiro p/ jog andar na próx rodada
+            //muda o valor do elemento do vetor tabuleiro p/ jog andar na próx rodada
             tabuleiro[casaPlay2 - 1] = 0;
         } else {
             //muda a casa antiga pra branco
@@ -284,22 +280,17 @@ function curarVeneno() {
                 document.getElementById(casaPlay2).style.backgroundColor = 'rgb(122, 64, 122)';
                 document.getElementById('casa2').innerHTML = `Está na casa ${casaPlay2}`;
 
-                //vê se caiu novamente em uma armadilha
-                if (tabuleiro[casaPlay2 - 1] == -1) {
-                    document.getElementById('status').innerHTML += `<br> ${nick2} caiu na armadilha`;
-                }
-
             } else {
                 document.getElementById('status').innerHTML += `<br> ${nick2} terá que voltar 2 casas`;
                 document.getElementById(casaPlay2).innerText = posicaoPlay2;
                 document.getElementById(casaPlay2).style.backgroundColor = 'rgb(122, 64, 122)';
                 document.getElementById('casa2').innerHTML = `Está na casa ${casaPlay2}`;
+            }
 
-                //vê se caiu novamente em uma armadilha
-                if (tabuleiro[casaPlay2 - 1] == -1) {
-                    document.getElementById('status').innerHTML += `<br> ${nick2} caiu na armadilha`;
-                }
-            }  
+            //vê se caiu novamente em uma armadilha
+            if (tabuleiro[casaPlay2 - 1] == -1) {
+                document.getElementById('status').innerHTML += `<br> ${nick2} caiu na armadilha`;
+            }
         }
         document.getElementById("player").innerText = `${nick1}, faça a sua escolha`;
         rodadas++;
@@ -320,7 +311,7 @@ function tomarAntidoto() {
             //pega a casa que foi tomado o antídoto
             casaCurada1 = casaPlay1;
 
-            //muda o valor do vetor tabuleiro p/ jog andar na próx rodada
+            //muda o valor do elemento do vetor tabuleiro p/ jog andar na próx rodada
             tabuleiro[casaPlay1 - 1] = 0;
         }
     } else {
@@ -334,7 +325,7 @@ function tomarAntidoto() {
             //pega a casa que foi tomado o antídoto
             casaCurada2 = casaPlay2;
 
-            //muda o valor do vetor tabuleiro p/ jog andar na próx rodada
+            //muda o valor do elemento do vetor tabuleiro p/ jog andar na próx rodada
             tabuleiro[casaPlay2 - 1] = 0;
         }
     }
