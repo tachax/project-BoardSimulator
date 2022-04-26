@@ -35,7 +35,6 @@ function jogar() {
 
     //altera o que aparece na página
     document.getElementById("nicknames").style.display = "none";
-    document.getElementById("jogar").style.display = "none";
 
     //inserindo o tabuleiro
     document.getElementById("tabela").innerHTML =
