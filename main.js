@@ -49,12 +49,12 @@ function jogar() {
     //sorteando as casas da armadilha
     for (i = 0; i < 10; i++) {
         armadilha = Math.floor(Math.random() * 30);
-    
+
         //verifica se a armadilha sorteada já é uma armadilha
         while (tabuleiro[armadilha] == -1) {
             armadilha = Math.floor(Math.random() * 30);
         }
-        
+
         tabuleiro[armadilha] = -1;
     }
 
@@ -68,16 +68,16 @@ function jogar() {
     }
 
     document.getElementById("linha").innerHTML += `<td rowspan="2" id="chegada">CHEGADA</td>`;
-    document.getElementById("jogo").style.display = "flex";  
-    document.getElementById("player").innerText = `${nick1}, faça a sua escolha`;  
-    document.getElementById("extra1").innerText = `${nick1}`;  
-    document.getElementById("extra2").innerText = `${nick2}`;  
+    document.getElementById("jogo").style.display = "flex";
+    document.getElementById("player").innerText = `${nick1}, faça a sua escolha`;
+    document.getElementById("extra1").innerText = `${nick1}`;
+    document.getElementById("extra2").innerText = `${nick2}`;
 }
 
 //rolar dados
 function rolarDados() {
     //verifica quem está jogando
-    if (rodadas % 2 != 0) { 
+    if (rodadas % 2 != 0) {
         if (tabuleiro[casaPlay1 - 1] == -1) {
             curarVeneno();
 
@@ -85,25 +85,25 @@ function rolarDados() {
             avancarCasas();
 
             //recoloca o -1 no elemento do vetor original
-            tabuleiro[casaCurada1-1] = -1;
+            tabuleiro[casaCurada1 - 1] = -1;
 
             //recoloca a armadilha na tela
-            document.getElementById(casaCurada1).innerHTML = tabuleiro[casaCurada1-1];
+            document.getElementById(casaCurada1).innerHTML = tabuleiro[casaCurada1 - 1];
         }
     } else {
         if (tabuleiro[casaPlay2 - 1] == -1) {
             curarVeneno();
-            
+
         } else {
             avancarCasas();
 
             //recoloca o -1 no elemento do vetor original
-            tabuleiro[casaCurada2-1] = -1;
+            tabuleiro[casaCurada2 - 1] = -1;
 
             //recoloca a armadilha na tela
-            document.getElementById(casaCurada2).innerHTML = tabuleiro[casaCurada2-1];
+            document.getElementById(casaCurada2).innerHTML = tabuleiro[casaCurada2 - 1];
         }
-    }  
+    }
 }
 
 //rolar dados p/ andar
@@ -140,8 +140,17 @@ function avancarCasas() {
 
         //verifica se alguém chegou ao fim do jogo
         if (casaPlay1 > 30) {
+            document.getElementById('casa1').innerHTML = `Está na casa chegada`;
             document.getElementById('chegada').innerHTML = `${nick1} VENCEU`;
+            document.getElementById('chegada').style.backgroundColor = 'rgb(116, 163, 116)';
             document.getElementById('status').innerHTML = `${nick1} venceu`;
+            document.getElementById("player").innerText = `PARTIDA ENCERRADA`;
+            document.getElementById("botRolar").disabled = true;
+            document.getElementById("botRolar").style.cursor = 'default';
+            document.getElementById("botTomar").disabled = true;
+            document.getElementById("botTomar").style.cursor = 'default';
+            document.getElementById("botDesistir").disabled = true;
+            document.getElementById("botDesistir").style.cursor = 'default';
         }
 
         //atualiza a posição do jog na tela com sua cor
@@ -154,7 +163,7 @@ function avancarCasas() {
         //verifica se caiu na armadilha
         if (tabuleiro[casaPlay1 - 1] == -1) {
             document.getElementById('status').innerHTML += `<br> ${nick1} caiu na armadilha`;
-        } 
+        }
 
     } else {
         document.getElementById("player").innerText = `${nick1}, faça a sua escolha`;
@@ -182,7 +191,17 @@ function avancarCasas() {
 
         //verifica se alguém chegou ao fim do jogo
         if (casaPlay2 > 30) {
+            document.getElementById('casa2').innerHTML = `Está na casa chegada`;
             document.getElementById('chegada').innerHTML = `${nick2} VENCEU`;
+            document.getElementById('chegada').style.backgroundColor = 'rgb(122, 64, 122)';
+            document.getElementById('status').innerHTML = `${nick2} venceu`;
+            document.getElementById("player").innerText = `PARTIDA ENCERRADA`;
+            document.getElementById("botRolar").disabled = true;
+            document.getElementById("botRolar").style.cursor = 'default';
+            document.getElementById("botTomar").disabled = true;
+            document.getElementById("botTomar").style.cursor = 'default';
+            document.getElementById("botDesistir").disabled = true;
+            document.getElementById("botDesistir").style.cursor = 'default';
         }
 
         //atualiza a posição do jog na tela com sua cor
@@ -195,7 +214,7 @@ function avancarCasas() {
         //verifica se caiu na armadilha
         if (tabuleiro[casaPlay2 - 1] == -1) {
             document.getElementById('status').innerHTML += `<br> ${nick2} caiu na armadilha`;
-        } 
+        }
     }
     //atualiza a rodada
     rodadas++;
@@ -207,10 +226,10 @@ function curarVeneno() {
     dado1 = Math.floor(Math.random() * 6 + 1);
     dado2 = Math.floor(Math.random() * 6 + 1);
     document.getElementById("status").innerHTML =
-            `Dado 1 = ${dado1} <br> Dado 2 = ${dado2}
+        `Dado 1 = ${dado1} <br> Dado 2 = ${dado2}
         <br>`;
 
-    if (rodadas%2 != 0) {
+    if (rodadas % 2 != 0) {
         //verifica se são iguais
         if (dado1 == dado2) {
             document.getElementById('status').innerHTML += `<br> Os dados são iguais! 
@@ -242,8 +261,8 @@ function curarVeneno() {
                 document.getElementById(casaPlay1).innerText = posicaoPlay1;
                 document.getElementById(casaPlay1).style.backgroundColor = 'rgb(116, 163, 116)';
                 document.getElementById('casa1').innerHTML = `Está na casa ${casaPlay1}`;
-                
-            }  
+
+            }
 
             //vê se caiu novamente em uma armadilha
             if (tabuleiro[casaPlay1 - 1] == -1) {
@@ -268,7 +287,7 @@ function curarVeneno() {
             //muda a casa antiga pra branco
             document.getElementById(casaPlay2).innerText = String(tabuleiro[casaPlay2 - 1]);
             document.getElementById(casaPlay2).style.backgroundColor = 'white';
-            
+
             //atualiza a casa nova
             casaPlay2 = casaPlay2 - 2
 
@@ -335,8 +354,20 @@ function tomarAntidoto() {
 //desistir
 function desistir() {
     if (rodadas % 2 != 0) {
-        document.getElementById('status').innerHTML = `${nick2} venceu`;
+        document.getElementById('status').innerHTML = `${nick1} deistiu`;
+        document.getElementById('casa1').innerHTML = `Saiu do jogo`;
+        document.getElementById('status').innerHTML += `<br><br>${nick2} venceu`;
     } else {
-        document.getElementById('status').innerHTML = `${nick1} venceu`;
+        document.getElementById('status').innerHTML = `${nick2} deistiu`;
+        document.getElementById('casa2').innerHTML = `Saiu do jogo`;
+        document.getElementById('status').innerHTML += `<br><br>${nick1} venceu`;
     }
+
+    document.getElementById("player").innerText = `PARTIDA ENCERRADA`;
+    document.getElementById("botRolar").disabled = true;
+    document.getElementById("botRolar").style.cursor = 'default';
+    document.getElementById("botTomar").disabled = true;
+    document.getElementById("botTomar").style.cursor = 'default';
+    document.getElementById("botDesistir").disabled = true;
+    document.getElementById("botDesistir").style.cursor = 'default';
 }
