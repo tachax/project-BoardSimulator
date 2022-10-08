@@ -67,9 +67,9 @@ function jogar() {
         id++;
     }
 
-    document.getElementById("linha").innerHTML += `<td rowspan="2" id="chegada">CHEGADA</td>`;
+    document.getElementById("linha").innerHTML += `<td rowspan="2" id="chegada">ARRIVAL</td>`;
     document.getElementById("jogo").style.display = "flex";
-    document.getElementById("player").innerText = `${nick1}, faça a sua escolha`;
+    document.getElementById("player").innerText = `${nick1}, make your choice`;
     document.getElementById("extra1").innerText = `${nick1}`;
     document.getElementById("extra2").innerText = `${nick2}`;
 }
@@ -115,12 +115,12 @@ function avancarCasas() {
 
     //cada rodada
     if (rodadas % 2 != 0) {
-        document.getElementById("player").innerText = `${nick2}, faça a sua escolha`;
+        document.getElementById("player").innerText = `${nick2}, make your choice`;
 
         //atualiza os status do jogo
         document.getElementById("status").innerHTML =
-            `Dado 1 = ${dado1} <br> Dado 2 = ${dado2}
-        <br><br> ${nick1} andará ${somaDados} casas`;
+            `Dice 1 = ${dado1} <br> Dice 2 = ${dado2}
+        <br><br> ${nick1} will walk ${somaDados} houses`;
 
         //retornar a casa antiga para o valor do início
         if (rodadas != 1) {
@@ -140,11 +140,11 @@ function avancarCasas() {
 
         //verifica se alguém chegou ao fim do jogo
         if (casaPlay1 > 30) {
-            document.getElementById('casa1').innerHTML = `Está na casa chegada`;
-            document.getElementById('chegada').innerHTML = `${nick1} VENCEU`;
+            document.getElementById('casa1').innerHTML = `is in the arrival house`;
+            document.getElementById('chegada').innerHTML = `${nick1} WON`;
             document.getElementById('chegada').style.backgroundColor = 'rgb(116, 163, 116)';
-            document.getElementById('status').innerHTML = `${nick1} venceu`;
-            document.getElementById("player").innerText = `PARTIDA ENCERRADA`;
+            document.getElementById('status').innerHTML = `${nick1} won`;
+            document.getElementById("player").innerText = `FINISHED`;
             document.getElementById("botRolar").disabled = true;
             document.getElementById("botRolar").style.cursor = 'default';
             document.getElementById("botTomar").disabled = true;
@@ -156,22 +156,22 @@ function avancarCasas() {
         //atualiza a posição do jog na tela com sua cor
         document.getElementById(casaPlay1).innerText = posicaoPlay1;
         document.getElementById(casaPlay1).style.backgroundColor = 'rgb(116, 163, 116)';
-        document.getElementById('casa1').innerHTML = `Está na casa ${casaPlay1}`;
-        document.getElementById("inicio1").innerHTML = `INI`;
+        document.getElementById('casa1').innerHTML = `Is in the house ${casaPlay1}`;
+        document.getElementById("inicio1").innerHTML = `BEGIN`;
         document.getElementById("inicio1").style.backgroundColor = 'white';
 
         //verifica se caiu na armadilha
         if (tabuleiro[casaPlay1 - 1] == -1) {
-            document.getElementById('status').innerHTML += `<br> ${nick1} caiu na armadilha`;
+            document.getElementById('status').innerHTML += `<br> ${nick1} fell into the trap`;
         }
 
     } else {
-        document.getElementById("player").innerText = `${nick1}, faça a sua escolha`;
+        document.getElementById("player").innerText = `${nick1}, make your choice`;
 
         //atualiza os status do jogo
         document.getElementById("status").innerHTML =
-            `Dado 1 = ${dado1} <br> Dado 2 = ${dado2}
-        <br><br> ${nick2} andará ${somaDados} casas`;
+            `Dice 1 = ${dado1} <br> Dice 2 = ${dado2}
+        <br><br> ${nick2} will walk ${somaDados} houses`;
 
         //retornar a casa antiga para o valor do início
         if (rodadas != 2) {
@@ -191,11 +191,11 @@ function avancarCasas() {
 
         //verifica se alguém chegou ao fim do jogo
         if (casaPlay2 > 30) {
-            document.getElementById('casa2').innerHTML = `Está na casa chegada`;
-            document.getElementById('chegada').innerHTML = `${nick2} VENCEU`;
+            document.getElementById('casa2').innerHTML = `is in the arrival house`;
+            document.getElementById('chegada').innerHTML = `${nick2} WON`;
             document.getElementById('chegada').style.backgroundColor = 'rgb(122, 64, 122)';
-            document.getElementById('status').innerHTML = `${nick2} venceu`;
-            document.getElementById("player").innerText = `PARTIDA ENCERRADA`;
+            document.getElementById('status').innerHTML = `${nick2} won`;
+            document.getElementById("player").innerText = `FINISHED`;
             document.getElementById("botRolar").disabled = true;
             document.getElementById("botRolar").style.cursor = 'default';
             document.getElementById("botTomar").disabled = true;
@@ -207,13 +207,13 @@ function avancarCasas() {
         //atualiza a posição do jog na tela com sua cor
         document.getElementById(casaPlay2).innerText = posicaoPlay2;
         document.getElementById(casaPlay2).style.backgroundColor = 'rgb(122, 64, 122)';
-        document.getElementById('casa2').innerHTML = `Está na casa ${casaPlay2}`;
-        document.getElementById("inicio2").innerHTML = `CIO`;
+        document.getElementById('casa2').innerHTML = `Is in the house ${casaPlay2}`;
+        document.getElementById("inicio2").innerHTML = `NING`;
         document.getElementById("inicio2").style.backgroundColor = 'white';
 
         //verifica se caiu na armadilha
         if (tabuleiro[casaPlay2 - 1] == -1) {
-            document.getElementById('status').innerHTML += `<br> ${nick2} caiu na armadilha`;
+            document.getElementById('status').innerHTML += `<br> ${nick2} fell into the trap`;
         }
     }
     //atualiza a rodada
@@ -226,14 +226,14 @@ function curarVeneno() {
     dado1 = Math.floor(Math.random() * 6 + 1);
     dado2 = Math.floor(Math.random() * 6 + 1);
     document.getElementById("status").innerHTML =
-        `Dado 1 = ${dado1} <br> Dado 2 = ${dado2}
+        `Dice 1 = ${dado1} <br> Dice 2 = ${dado2}
         <br>`;
 
     if (rodadas % 2 != 0) {
         //verifica se são iguais
         if (dado1 == dado2) {
-            document.getElementById('status').innerHTML += `<br> Os dados são iguais! 
-            <br> ${nick1} está curado do veneno!`;
+            document.getElementById('status').innerHTML += `<br> The dices are the same! 
+            <br> ${nick1} is cured of the poison!`;
 
             //pega a casa que foi curada
             casaCurada1 = casaPlay1;
@@ -250,33 +250,33 @@ function curarVeneno() {
 
             //se cair na mesma casa que o outro player, volta mais 3 casas
             if (casaPlay1 == casaPlay2) {
-                document.getElementById('status').innerHTML += `<br> ${nick1} terá que voltar 5 casas`;
+                document.getElementById('status').innerHTML += `<br> ${nick1} will have to go back 5 houses`;
                 casaPlay1 = casaPlay1 - 3
                 document.getElementById(casaPlay1).innerText = posicaoPlay1;
                 document.getElementById(casaPlay1).style.backgroundColor = 'rgb(116, 163, 116)';
-                document.getElementById('casa1').innerHTML = `Está na casa ${casaPlay1}`;
+                document.getElementById('casa1').innerHTML = `Is in the house ${casaPlay1}`;
 
             } else {
-                document.getElementById('status').innerHTML += `<br> ${nick1} terá que voltar 2 casas`;
+                document.getElementById('status').innerHTML += `<br> ${nick1} will have to go back 2 houses`;
                 document.getElementById(casaPlay1).innerText = posicaoPlay1;
                 document.getElementById(casaPlay1).style.backgroundColor = 'rgb(116, 163, 116)';
-                document.getElementById('casa1').innerHTML = `Está na casa ${casaPlay1}`;
+                document.getElementById('casa1').innerHTML = `Is in the house ${casaPlay1}`;
 
             }
 
             //vê se caiu novamente em uma armadilha
             if (tabuleiro[casaPlay1 - 1] == -1) {
-                document.getElementById('status').innerHTML += `<br> ${nick1} caiu na armadilha`;
+                document.getElementById('status').innerHTML += `<br> ${nick1} fell into the trap`;
             }
         }
-        document.getElementById("player").innerText = `${nick2}, faça a sua escolha`;
+        document.getElementById("player").innerText = `${nick2}, make your choice`;
         rodadas++;
 
     } else {
         //verifica se são iguais
         if (dado1 == dado2) {
-            document.getElementById('status').innerHTML += `<br> Os dados são iguais! 
-            <br> ${nick2} está curado do veneno`;
+            document.getElementById('status').innerHTML += `<br> The dices are the same! 
+            <br> ${nick2} is cured of the poison`;
 
             //pega a casa que foi curada
             casaCurada2 = casaPlay2;
@@ -293,25 +293,25 @@ function curarVeneno() {
 
             //se cair na mesma casa que o outro player, volta mais 3 casas
             if (casaPlay2 == casaPlay1) {
-                document.getElementById('status').innerHTML += `<br> ${nick2} terá que voltar 5 casas`;
+                document.getElementById('status').innerHTML += `<br> ${nick2} will have to go back 5 houses`;
                 casaPlay2 = casaPlay1 - 3
                 document.getElementById(casaPlay2).innerText = posicaoPlay2;
                 document.getElementById(casaPlay2).style.backgroundColor = 'rgb(122, 64, 122)';
-                document.getElementById('casa2').innerHTML = `Está na casa ${casaPlay2}`;
+                document.getElementById('casa2').innerHTML = `Is in the house ${casaPlay2}`;
 
             } else {
-                document.getElementById('status').innerHTML += `<br> ${nick2} terá que voltar 2 casas`;
+                document.getElementById('status').innerHTML += `<br> ${nick2} will have to go back 2 houses`;
                 document.getElementById(casaPlay2).innerText = posicaoPlay2;
                 document.getElementById(casaPlay2).style.backgroundColor = 'rgb(122, 64, 122)';
-                document.getElementById('casa2').innerHTML = `Está na casa ${casaPlay2}`;
+                document.getElementById('casa2').innerHTML = `Is in the house ${casaPlay2}`;
             }
 
             //vê se caiu novamente em uma armadilha
             if (tabuleiro[casaPlay2 - 1] == -1) {
-                document.getElementById('status').innerHTML += `<br> ${nick2} caiu na armadilha`;
+                document.getElementById('status').innerHTML += `<br> ${nick2} fell into the trap`;
             }
         }
-        document.getElementById("player").innerText = `${nick1}, faça a sua escolha`;
+        document.getElementById("player").innerText = `${nick1}, make your choice`;
         rodadas++;
     }
 
@@ -321,11 +321,11 @@ function curarVeneno() {
 function tomarAntidoto() {
     if (rodadas % 2 != 0) {
         if (antidotoPlay1 == 0) {
-            document.getElementById('status').innerHTML = `${nick1} não possui mais antídotos`;
+            document.getElementById('status').innerHTML = `${nick1} has no more antidotes`;
         } else {
             antidotoPlay1--;
-            document.getElementById('status').innerHTML = `${nick1} tomou um antídoto e <br> está curado do veneno`;
-            document.getElementById('estoque1').innerHTML = `Antídotos: ${antidotoPlay1}`;
+            document.getElementById('status').innerHTML = `${nick1} took an antidote and <br> is cured of the poison`;
+            document.getElementById('estoque1').innerHTML = `Antidotes: ${antidotoPlay1}`;
 
             //pega a casa que foi tomado o antídoto
             casaCurada1 = casaPlay1;
@@ -335,11 +335,11 @@ function tomarAntidoto() {
         }
     } else {
         if (antidotoPlay2 == 0) {
-            document.getElementById('status').innerHTML = `${nick2} não possui mais antídotos`;
+            document.getElementById('status').innerHTML = `${nick2} has no more antidotes`;
         } else {
             antidotoPlay2--;
-            document.getElementById('status').innerHTML = `${nick2} tomou um antídoto e <br> está curado do veneno`;
-            document.getElementById('estoque2').innerHTML = `Antídotos: ${antidotoPlay2}`;
+            document.getElementById('status').innerHTML = `${nick2} took an antidote and <br> is cured of the poison`;
+            document.getElementById('estoque2').innerHTML = `Antidotes: ${antidotoPlay2}`;
 
             //pega a casa que foi tomado o antídoto
             casaCurada2 = casaPlay2;
@@ -354,16 +354,16 @@ function tomarAntidoto() {
 //desistir
 function desistir() {
     if (rodadas % 2 != 0) {
-        document.getElementById('status').innerHTML = `${nick1} deistiu`;
-        document.getElementById('casa1').innerHTML = `Saiu do jogo`;
-        document.getElementById('status').innerHTML += `<br><br>${nick2} venceu`;
+        document.getElementById('status').innerHTML = `${nick1} gave up`;
+        document.getElementById('casa1').innerHTML = `Quit the game`;
+        document.getElementById('status').innerHTML += `<br><br>${nick2} won`;
     } else {
-        document.getElementById('status').innerHTML = `${nick2} deistiu`;
-        document.getElementById('casa2').innerHTML = `Saiu do jogo`;
-        document.getElementById('status').innerHTML += `<br><br>${nick1} venceu`;
+        document.getElementById('status').innerHTML = `${nick2} gave up`;
+        document.getElementById('casa2').innerHTML = `Quit the game`;
+        document.getElementById('status').innerHTML += `<br><br>${nick1} won`;
     }
 
-    document.getElementById("player").innerText = `PARTIDA ENCERRADA`;
+    document.getElementById("player").innerText = `FINISHED`;
     document.getElementById("botRolar").disabled = true;
     document.getElementById("botRolar").style.cursor = 'default';
     document.getElementById("botTomar").disabled = true;

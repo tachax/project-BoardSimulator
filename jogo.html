@@ -14,15 +14,15 @@
     <div id="nicknames" class="nicknames">
         <div class="card-players">
             <h3>Player 1</h3>
-            <label for="nick1">Escolha um nickname:</label>
+            <label for="nick1">Choose a nickname:</label>
             <input type="text" id="nick1">
         </div>
         <div class="card-players">
             <h3>Player 2</h3>
-            <label for="nick2">Escolha um nickname:</label>
+            <label for="nick2">Choose a nickname:</label>
             <input type="text" id="nick2">
         </div>
-        <button id="jogar" onclick="jogar()">Iniciar Jogo</button>
+        <button id="jogar" onclick="jogar()">Start</button>
     </div>
   
 
@@ -32,36 +32,36 @@
         <div  id="menuPlayers" class="menuPlayers">
             <h2 id="player">Escolha dos Jogadores:</h2>
             <div class="botoes">
-                <button id="botRolar" onclick="rolarDados()">Rolar Dados</button>
-                <button id="botTomar" onclick="tomarAntidoto()">Tomar Antídoto</button>
-                <button id="botDesistir" onclick="desistir()">Desistir</button>
+                <button id="botRolar" onclick="rolarDados()">Roll Dices</button>
+                <button id="botTomar" onclick="tomarAntidoto()">Take antidote</button>
+                <button id="botDesistir" onclick="desistir()">Give Up</button>
             </div>
         </div>
         <div>
-            <h2>Status do Jogo</h2>
+            <h2>Game Status</h2>
             <div class="status">
                 <div>
                     <h3>Extras:</h3>
                     <table class="extra">
                         <tr>
                             <td rowspan="2" id="extra1">play 1</td>
-                            <td id="casa1">Está na casa início</td>
+                            <td id="casa1">in the beginning house</td>
                         </tr>
                         <tr>
-                            <td id="estoque1">Antídotos: 3</td>
+                            <td id="estoque1">Antidotes: 3</td>
                         </tr>
                         <tr>
                             <td rowspan="2" id="extra2">play 2</td>
-                            <td id="casa2">Está na casa início</td>
+                            <td id="casa2">in the beginning house</td>
                         </tr>
                         <tr>
-                            <td id="estoque2">Antídotos: 3</td>
+                            <td id="estoque2">Antidotes: 3</td>
                         </tr>
                     </table>
                 </div>
                 <div>
-                    <h3>Acontecendo agora:</h3>
-                    <p id="status">Nenhum jogador no tabuleiro</p>
+                    <h3>Now:</h3>
+                    <p id="status">no player on the board</p>
                 </div>
             </div>
         </div>
