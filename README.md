@@ -1,7 +1,25 @@
 # projeto-BoardSimulator
-Projeto de jogo de tabuleiro jogado entre dois players humanos. Feito com HTML, CSS e JavaScript.
+Project of a board game played between two human players. Made with HTML, CSS and JavaScript.
 
-Imagens da Interface: 
-![interface1](https://user-images.githubusercontent.com/98829238/165591312-e9072410-a078-487e-a874-535f243a5293.jpg)
+Rules of the game:
+<ul>
+  <li>Each player has to choose a nickname</li>
+  <li>In each round the player can choose between rolling the dices, taking antidote and quitting</li>
+  <li>The sum of the dice will determine how many houses the player moves</li>
+  <li>The -1 houses are traps and the player gets poisoned if he stops there</li>
+  <li>Poisoned Player:</li>
+  <ul>
+      <li>is cured of the poison if the result of the dices are equal or if the palyer takes the antidote</li>
+      <li>if the result of the dice are different, the player goes back 2 spaces</li>
+      <ul>
+          <li>if the house he stops on is occupied by another player, he moves back another 3 houses</li>
+      </ul>
+  </ul>
+  <li>Whoever gets to the final house first wins</li>
+</ul>
+
+Interface Images: 
+
+![board2](https://user-images.githubusercontent.com/98829238/194715268-b1cbd10c-9fc2-4be7-8cc1-a6c92ec50be5.png)
 <br><br>
-![interface2](https://user-images.githubusercontent.com/98829238/165591322-0d7a88c4-8564-4eb1-acf8-d876528220fb.jpg)
+![board1](https://user-images.githubusercontent.com/98829238/194715261-efd04c3e-1a9f-4282-b6a0-5b540d29d8d3.png)
