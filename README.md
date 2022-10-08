@@ -1,5 +1,5 @@
 # projeto-BoardSimulator
-Project of a board game played between two human players. Made with HTML, CSS and JavaScript.
+Project of a board game played between two human players. Made with HTML, CSS and JavaScript. Code made in Portuguese, but user interfaces updated to English.
 
 Rules of the game:
 <ul>
